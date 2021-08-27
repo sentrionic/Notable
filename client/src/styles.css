@@ -1,0 +1,5 @@
+.w-md-editor-text-pre,
+.w-md-editor-text-input,
+.w-md-editor-text > .w-md-editor-text-pre {
+  font-size: 16px;
+}

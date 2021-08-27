@@ -1,0 +1,49 @@
+CREATE TABLE  noteEntity(
+    id TEXT NOT NULL PRIMARY KEY,
+    title TEXT NOT NULL,
+    body TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL
+);
+
+insertNote:
+INSERT OR REPLACE
+INTO noteEntity (
+    id,
+    title,
+    body,
+    created_at,
+    updated_at
+) VALUES (?, ?, ?, ?, ?);
+
+updateNote:
+UPDATE noteEntity
+SET title      = :title,
+    body       = :body,
+    updated_at = :updatedAt
+WHERE id = :id;
+
+searchNotes:
+SELECT * FROM noteEntity
+WHERE title LIKE ('%' || :query || '%')
+OR body LIKE ('%' || :query || '%')
+ORDER BY created_at DESC;
+
+fetchAll:
+SELECT * FROM noteEntity
+ORDER BY created_at DESC;
+
+getNoteById:
+SELECT * FROM noteEntity
+WHERE id = :id;
+
+removeNote:
+DELETE FROM noteEntity
+WHERE id = :id;
+
+clearDatabase:
+DELETE FROM noteEntity;
+
+deleteNotes:
+DELETE FROM noteEntity
+WHERE id IN ?;

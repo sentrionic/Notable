@@ -1,0 +1,27 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "Notable"
+
+include ':app'
+include ':core'
+include ':auth'
+include ':auth:auth-datasource'
+include ':auth:auth-datasource-test'
+include ':auth:auth-interactors'
+include ':auth:ui-auth'
+include ':auth:ui-splash'
+include ':note'
+include ':note:note-datasource'
+include ':note:note-datasource-test'
+include ':note:note-domain'
+include ':note:note-interactors'
+include ':note:ui-noteList'
+include ':note:ui-noteDetail'
+include ':note:ui-noteForm'
+include ':shared'
+include ':constants'
