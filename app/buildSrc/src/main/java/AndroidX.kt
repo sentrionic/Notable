@@ -1,11 +1,11 @@
 object AndroidX {
-    private const val coreKtxVersion = "1.6.0"
+    private const val coreKtxVersion = "1.8.0"
     const val coreKtx = "androidx.core:core-ktx:$coreKtxVersion"
 
-    private const val appCompatVersion = "1.3.0"
+    private const val appCompatVersion = "1.4.2"
     const val appCompat = "androidx.appcompat:appcompat:$appCompatVersion"
 
-    private const val lifecycleVmKtxVersion = "2.4.0-alpha02"
+    private const val lifecycleVmKtxVersion = "2.5.1"
     const val lifecycleVmKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVmKtxVersion"
 
     private const val dataStoreVersion = "1.0.0"

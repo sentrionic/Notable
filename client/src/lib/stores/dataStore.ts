@@ -21,8 +21,8 @@ type DataStoreState = {
   reset: () => void;
 };
 
-export const dataStore = create<DataStoreState>(
-  persist(
+export const dataStore = create(
+  persist<DataStoreState>(
     (set, get) => ({
       current: 0,
       setCurrent: (index) => set({ current: index }),

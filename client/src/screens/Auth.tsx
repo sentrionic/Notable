@@ -7,12 +7,12 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import React, { FormEvent, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { login, register } from '../lib/handler';
 import { tokenStore } from '../lib/stores/tokenStore';
 
 export function Auth() {
-  const router = useHistory();
+  const navigate = useNavigate();
   const { setState } = tokenStore;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -23,7 +23,7 @@ export function Auth() {
     try {
       const { data } = await login({ email, password });
       setState({ token: data.token });
-      router.replace('/');
+      navigate('/', { replace: true });
     } catch (err) {
       if (err?.response?.status === 404) {
         toast({
@@ -40,7 +40,7 @@ export function Auth() {
     try {
       const { data } = await register({ email, password });
       setState({ token: data.token });
-      router.replace('/');
+      navigate('/', { replace: true });
     } catch (err) {
       let title = 'Something went wrong, try again later';
 

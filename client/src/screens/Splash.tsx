@@ -1,12 +1,12 @@
 import { Box, CircularProgress, Flex, Heading, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { fetchNotes } from '../lib/handler';
 import { dataStore } from '../lib/stores/dataStore';
 import { tokenStore } from '../lib/stores/tokenStore';
 
 export function Splash() {
-  const router = useHistory();
+  const navigate = useNavigate();
   const { getState } = tokenStore;
   const setNotes = dataStore((state) => state.setNotes);
   const [authChecked, setAuthChecked] = useState(false);
@@ -18,12 +18,12 @@ export function Splash() {
       const fetch = async () => {
         const { data } = await fetchNotes();
         setNotes(data);
-        router.replace('/home');
+        navigate('/home', { replace: true });
       };
 
       fetch();
     } else {
-      router.replace('/auth');
+      navigate('/auth', { replace: true });
     }
   }, []);
 

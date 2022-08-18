@@ -5,8 +5,8 @@ type TokenStoreState = {
   token?: string;
 };
 
-export const tokenStore = create<TokenStoreState>(
-  persist(
+export const tokenStore = create(
+  persist<TokenStoreState>(
     () => ({
       token: null,
     }),

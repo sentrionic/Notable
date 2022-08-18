@@ -5,6 +5,7 @@ import io.ktor.client.engine.mock.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
 import io.ktor.http.*
+import io.notable.constants.BASE_URL
 import io.notable.note_datasource.network.NoteService
 import io.notable.note_datasource.network.NoteServiceImpl
 import io.notable.note_datasource_test.network.data.NoteDataEmpty
@@ -18,7 +19,7 @@ class NoteServiceListFake {
         private val Url.hostWithPortIfRequired: String get() = if (port == protocol.defaultPort) host else hostWithPort
         private val Url.fullUrl: String get() = "${protocol.name}://$hostWithPortIfRequired$fullPath"
 
-        private const val BASEURL = "http://192.168.2.123:8080"
+        private const val BASEURL = BASE_URL
         private val responseHeaders = headersOf(
             "Content-Type" to listOf("application/json", "charset=utf-8")
         )

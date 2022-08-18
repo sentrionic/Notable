@@ -53,6 +53,7 @@ dependencies {
     implementation Compose.material
     implementation Compose.tooling
     implementation Compose.navigation
+    implementation Compose.navigationHilt
 
     implementation Google.material
 

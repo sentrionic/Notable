@@ -2,6 +2,7 @@ import React from 'react';
 import { Tooltip } from '@chakra-ui/react';
 
 interface StyledTooltipProps {
+  children: React.ReactNode;
   label: string;
 }
 

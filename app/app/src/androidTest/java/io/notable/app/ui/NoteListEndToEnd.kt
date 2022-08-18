@@ -1,5 +1,6 @@
 package io.notable.app.ui
 
+import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.test.*
@@ -126,7 +127,7 @@ class NoteListEndToEnd {
 
     @Before
     fun before() {
-        composeTestRule.setContent {
+        composeTestRule.activity.setContent {
             NotableTheme {
                 val navController = rememberNavController()
                 NavHost(

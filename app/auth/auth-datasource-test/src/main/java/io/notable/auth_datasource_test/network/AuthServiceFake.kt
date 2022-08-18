@@ -9,6 +9,7 @@ import io.notable.auth_datasource.network.AuthService
 import io.notable.auth_datasource.network.AuthServiceImpl
 import io.notable.auth_datasource_test.network.data.AuthDataEmpty
 import io.notable.auth_datasource_test.network.data.AuthDataValid
+import io.notable.constants.BASE_URL
 
 class AuthServiceFake {
 
@@ -17,7 +18,7 @@ class AuthServiceFake {
         private val Url.hostWithPortIfRequired: String get() = if (port == protocol.defaultPort) host else hostWithPort
         private val Url.fullUrl: String get() = "${protocol.name}://$hostWithPortIfRequired$fullPath"
 
-        private const val BASEURL = "http://192.168.2.123:8080/accounts"
+        private const val BASEURL = "$BASE_URL/accounts"
         private val responseHeaders = headersOf(
             "Content-Type" to listOf("application/json", "charset=utf-8")
         )

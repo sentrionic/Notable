@@ -1,7 +1,7 @@
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import { IconButton, useToast } from '@chakra-ui/react';
 import * as React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { dataStore } from '../lib/stores/dataStore';
 import { tokenStore } from '../lib/stores/tokenStore';
 import { StyledTooltip } from './StyledTooltip';
@@ -10,7 +10,7 @@ export const LogoutIcon: React.FC = () => {
   const reset = dataStore((state) => state.reset);
   const { setState } = tokenStore;
   const toast = useToast();
-  const router = useHistory();
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     reset();
@@ -21,7 +21,7 @@ export const LogoutIcon: React.FC = () => {
       duration: 3000,
       isClosable: true,
     });
-    router.replace('/auth');
+    navigate('/auth', { replace: true });
   };
 
   return (

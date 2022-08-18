@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import com.google.accompanist.insets.ProvideWindowInsets
@@ -17,6 +16,7 @@ import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.hilt.navigation.compose.hiltViewModel
 import io.notable.app.ui.navigation.*
 import io.notable.app.ui.theme.Grey1
 import io.notable.app.ui.theme.NotableTheme
@@ -106,7 +106,7 @@ class MainActivity : ComponentActivity() {
                             }
                         )
 
-                        sessionManager.state.observe(this@MainActivity, { state ->
+                        sessionManager.state.observe(this@MainActivity) { state ->
                             val route = when {
                                 state.authToken != null -> Screen.NoteList.route
                                 state.didCheckForPreviousAuthUser -> Screen.AuthPage.route
@@ -116,7 +116,7 @@ class MainActivity : ComponentActivity() {
                             navController.navigate(route) {
                                 popUpTo(0)
                             }
-                        })
+                        }
                     }
                 }
             }
@@ -134,10 +134,10 @@ fun NavGraphBuilder.addNoteList(
 ) {
     composable(
         route = Screen.NoteList.route,
-        exitTransition = { _, _ ->
+        exitTransition = {
             slideExitTransition(width)
         },
-        popEnterTransition = { _, _ ->
+        popEnterTransition = {
             slidePopEnterTransition(width)
         },
     ) {
@@ -169,16 +169,16 @@ fun NavGraphBuilder.addNoteDetail(
     composable(
         route = Screen.NoteDetail.route + "/{noteId}",
         arguments = Screen.NoteDetail.arguments,
-        enterTransition = { _, _ ->
+        enterTransition = {
             slideEnterTransition(width)
         },
-        popExitTransition = { _, _ ->
+        popExitTransition = {
             slidePopExitTransition(width)
         },
-        exitTransition = { _, _ ->
+        exitTransition = {
             slideExitTransition(width)
         },
-        popEnterTransition = { _, _ ->
+        popEnterTransition = {
             slidePopEnterTransition(width)
         },
     ) {
@@ -204,10 +204,10 @@ fun NavGraphBuilder.addNoteForm(
     composable(
         route = Screen.NoteForm.route + "/{noteId}",
         arguments = Screen.NoteForm.arguments,
-        enterTransition = { _, _ ->
+        enterTransition = {
             slideEnterTransition(width)
         },
-        popExitTransition = { _, _ ->
+        popExitTransition = {
             slidePopExitTransition(width)
         },
     ) {

@@ -4,6 +4,6 @@ class DataStoreKeys {
 
     companion object {
         // DataStore Keys
-        val AUTH_TOKEN = "io.notable.app.AUTH_TOKEN"
+        const val AUTH_TOKEN = "io.notable.app.AUTH_TOKEN"
     }
 }

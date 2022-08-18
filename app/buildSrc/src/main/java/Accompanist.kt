@@ -1,5 +1,5 @@
 object Accompanist {
-    private const val version = "0.16.0"
+    private const val version = "0.25.1"
     const val animations =
         "com.google.accompanist:accompanist-navigation-animation:$version"
 
