@@ -12,7 +12,7 @@ import (
 	db "github.com/sentrionic/notable/db/sqlc"
 	"github.com/sentrionic/notable/util"
 	"github.com/stretchr/testify/require"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"reflect"
@@ -299,7 +299,7 @@ func randomUser(t *testing.T) (user db.User, password string) {
 }
 
 func requireBodyMatchToken(t *testing.T, body *bytes.Buffer) {
-	data, err := ioutil.ReadAll(body)
+	data, err := io.ReadAll(body)
 	require.NoError(t, err)
 
 	var gotToken authResponse

@@ -13,7 +13,7 @@ import (
 	"github.com/sentrionic/notable/token"
 	"github.com/sentrionic/notable/util"
 	"github.com/stretchr/testify/require"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -874,7 +874,7 @@ func randomNote(userId uuid.UUID) db.Note {
 }
 
 func requireBodyMatchNote(t *testing.T, body *bytes.Buffer, note db.Note) {
-	data, err := ioutil.ReadAll(body)
+	data, err := io.ReadAll(body)
 	require.NoError(t, err)
 
 	var gotNote db.Note
@@ -884,7 +884,7 @@ func requireBodyMatchNote(t *testing.T, body *bytes.Buffer, note db.Note) {
 }
 
 func requireBodyMatchNotes(t *testing.T, body *bytes.Buffer, notes []db.Note) {
-	data, err := ioutil.ReadAll(body)
+	data, err := io.ReadAll(body)
 	require.NoError(t, err)
 
 	var gotNotes []db.Note
