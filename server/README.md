@@ -1,29 +1,31 @@
 # Notable - Server
 
-The server written using Go.
+The server written using Kotlin.
 
 # Stack
 
-- [Gin](https://gin-gonic.com/) for the REST server
-- [sqlc](https://sqlc.dev/) to generate type-safe SQL
+- [Ktor](https://ktor.io/) for the REST server
+- [Exposed](https://github.com/JetBrains/Exposed) as the database ORM
 - PostgreSQL
-- [Paseto](https://github.com/paragonie/paseto) Token for authentication
+- [JWT](https://jwt.io/) Token for authentication
+- [Detekt](https://detekt.dev/) for linting
 
 # Installation
 
-(If you are familiar with `make`, take a look at the `Makefile` to quickly setup the following steps)
-
-1. Install Docker and get the Postgresql container (`make postgres`)
-2. Start the Postgresql container and create a DB (`make createdb`)
-3. Install Golang and get all the dependencies (`go mod tidy`)
-4. Apply the DB migration (`make migrateup`)
-5. Run `go run github.com/sentrionic/notable` to run the server
+1. Install Docker and get the Postgresql container
+2. Start the Postgresql container and create a DB with the name `notable`
+   ```bash
+    docker exec -it postgres createdb --username=<owner> --owner=<owner> notable
+   ```
+3. Install [IntelliJ](https://www.jetbrains.com/idea/)
+4. Sync the dependencies using `Gradle`
+5. Run the server from the `Application.kt` file.
 
 # Testing
 
-1. Make sure you are connected to the database
-2. Run `go test -v -cover ./...` (`make test`)
-
-# Credits
-
-[Tech School](https://github.com/techschool/simplebank): The server is based on his tutorial series.
+1. Create a test DB
+   ```bash
+    docker exec -it postgres createdb --username=<owner> --owner=<owner> notable_test
+   ```
+2. Change the `db.dbUrl` value in the `application-test.conf` to your values.
+3. Run the tests in the `test` directory.

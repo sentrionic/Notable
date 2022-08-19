@@ -30,8 +30,8 @@ refactoring into a [KMM](https://kotlinlang.org/lp/mobile/) project.
 
 ## Module Design
 
-| Module name                                         | Type                | Description                                                                                                    |
-| --------------------------------------------------- | ------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Module name                                             | Type                | Description                                                                                                    |
+| ------------------------------------------------------- | ------------------- | -------------------------------------------------------------------------------------------------------------- |
 | [app](/app/app/)                                        | Android Application | MainActivity, BaseApplication, Theme, Hilt setup.                                                              |
 | [core](/app/core/)                                      | Java/Kotlin Library | Core business models and classes.                                                                              |
 | [note-datasource](/app/note/note-datasource/)           | Java/Kotlin Library | Data-sources (network and cache) for the note Module.                                                          |
@@ -40,9 +40,9 @@ refactoring into a [KMM](https://kotlinlang.org/lp/mobile/) project.
 | [note-interactors ](/app/note/note-interactors/)        | Java/Kotlin Library | Use-cases for the note Module.                                                                                 |
 | [ui-noteList](/app/ui-noteList/)                        | Android Library     | UI components for the NoteList screen.                                                                         |
 | [ui-noteDetail](/app/ui-noteDetail/)                    | Android Library     | UI components for the NoteDetail screen.                                                                       |
-| [ui-noteForm](/app/ui-noteForm/)                        | Android Library     | UI components for the NoteForm screen.                                                                       |
+| [ui-noteForm](/app/ui-noteForm/)                        | Android Library     | UI components for the NoteForm screen.                                                                         |
 | [constants](/app/constants/)                            | Java/Kotlin Library | Random constants.                                                                                              |
-| [shared](/app/shared/)                              | Android Library     | Shared android components, SessionManager, RefreshManager, ConnectivityManager                                 |
+| [shared](/app/shared/)                                  | Android Library     | Shared android components, SessionManager, RefreshManager, ConnectivityManager                                 |
 
 The [auth](/app/auth/) module is equivalent to the note one.
 

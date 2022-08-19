@@ -1,0 +1,30 @@
+name: Run tests
+
+defaults:
+  run:
+    working-directory: ./app
+
+on:
+  push:
+    paths:
+      - 'app/**'
+  pull_request:
+    paths:
+      - 'app/**'
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "microsoft"
+          cache: gradle
+      - name: Grant Permission to Execute
+        run: chmod +x gradlew
+      - name: Run Unit Tests
+        run: ./gradlew test --no-daemon

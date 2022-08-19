@@ -9,7 +9,7 @@ class DatetimeUtil {
     }
 
     fun humanizeDatetime(createdAt: String): String {
-        val date = createdAt.substring(0, createdAt.length - 8).toLocalDateTime()
+        val date = createdAt.toLocalDateTime()
         val sb = StringBuilder()
         date.run {
             val hour = if (this.hour > 12) {
